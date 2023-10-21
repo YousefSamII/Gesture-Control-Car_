@@ -31,10 +31,9 @@ int main(void)
 	MDIO_vSetPinDirection(IR_PORT_ID,IR_PIN_ID ,INPUT);
 	MDIO_vSetPinDirection(BUZZ_PORT_ID,BUZZ_PIN_ID ,OUTPUT);
 	MDIO_vWritePin(BUZZ_PORT_ID ,BUZZ_PIN_ID,LOW);
-	DDRA |=(1<<PA0);
 	while(1)
 	{
-		if(!(PIND & (1<<PD3)))
+		if(!(MDIO_u8ReadPin(IR_PORT_ID,IR_PIN_ID))
 		{
 			MDIO_vWritePin(BUZZ_PORT_ID,BUZZ_PIN_ID,HIGH);
 			HMOTOR_vMotorStop();
